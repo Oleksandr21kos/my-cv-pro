@@ -7,7 +7,7 @@ body {
   /* height: 100%; */
   /* width: 100%; */
   overflow: auto;
-  width: 100vw;
+  /* width: 100vw; */
   height: auto;
 }
 
@@ -33,19 +33,30 @@ h1 {
   color: #5c6168;
   /*margin-bottom: 12px;*/
 }
-.user-info-position div {
-  width: 10px;
-  height: 6px;
-  /*відцентрувати рижу штуку*/
-  background-color: #d67215;
-  margin-top: 4px;
-}
+
 .user-info-position {
   display: flex;
   flex-direction: row;
 }
+.user-info-position::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 6px;
+  background-color: #d67215;
+  margin-top: 4px;
+}
 
-.user-info-profession {
+/* .user-info-position::after { 
+  position: absolute;
+  content: "";
+  display: block;
+  width: 200px;
+  height: 187px;
+  background-color: #d67215;
+  top: 0; } */
+
+.position-title {
   text-transform: uppercase;
   line-height: 12.1px;
   font-size: 10px;
@@ -62,11 +73,16 @@ h1 {
   font-size: 10px;
   margin-top: 8px;
 }
-.user-info-location img {
+/* user location icon don't display!!!!!!!!! */
+.user-info-location::before {
+  content: url(/img/Vector.png);
+  display: block;
   height: 11px;
   width: 8px;
 }
-.title-separator {
+h2::after {
+  content: "";
+  display: block;
   width: 26px;
   height: 1px;
   background-color: #5c6168;
@@ -74,13 +90,7 @@ h1 {
   margin-bottom: 16px;
   /* title separator */
 }
-.long-title-separator {
-  width: 100px;
-  height: 1px;
-  background-color: #5c6168;
-  margin-top: 10px;
-  margin-bottom: 14px;
-}
+
 .user-education {
   margin-top: 22px;
   text-align: left;
@@ -105,9 +115,12 @@ h1 {
   line-height: 15.73px;
   letter-spacing: 0.28em;
 }
-.user-education-course {
+h3 {
   font-weight: 600;
+  font-size: 10px;
   margin-top: 16px;
+  margin-bottom: 4px;
+  color: #5c6168;
 }
 h2 {
   font-size: 13px;
@@ -116,28 +129,66 @@ h2 {
   letter-spacing: 0.275em;
   color: #5c6168;
 }
+.right-section h2::after {
+  width: 100px;
+  margin-left: -24px;
+}
 .user-skills {
   margin-top: 25px;
 }
 
 .user-skills ul {
-  /* width: 146px;
-  height: 156px; */
   gap: 6px;
   color: #5c6168;
   font-size: 10px;
   font-weight: 400;
   line-height: 12.1px;
-  list-style-position: inside;
+  /* list-style-position: inside; */
 }
 
+.contact-mail::before {
+  content: "";
+  background-image: url(/img/icons/mail.svg);
+  position: absolute;
+  width: 9px;
+  height: 7px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) translateX(0) scale(1) rotateX(0deg);
+  animation: rotate linear 1s infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: translateY(-50%) translateX(0) scale(1) rotateY(0deg);
+  }
+  /* 33% { 
+    transform: translateY(-50%) translateX(0) scale(1) rotateY(180deg);
+   } */
+
+  100% {
+    transform: translateY(-50%) translateX(0) scale(1) rotateY(360deg);
+  }
+}
+.contact-tel::before {
+  content: url(/img/icons/telephone.svg);
+  position: absolute;
+}
+.contact-linkedin::before {
+  content: url(/img/icons/Linkedin.svg);
+}
+.contact-behance::before {
+  content: url(/img/icons/behance.svg);
+}
+.contact-dribble::before {
+  content: url(/img/icons/ball.svg);
+}
 .user-image {
   width: 116px;
   height: 116px;
   /* top: 39px; */
   /* left: 229px; */
   object-fit: cover;
-  border-radius: 90%;
+  border-radius: 50%;
   /* margin-top: 39px;
   margin-right: 22px;
   margin-bottom: 21px;
@@ -146,31 +197,31 @@ h2 {
 .contacts-list a {
   text-decoration: none;
   color: #5c6168;
-  font-family: Inter;
   font-size: 10px;
   font-weight: 400;
-  line-height: 12.1px;
-  text-align: left;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
 }
 
 .header-right {
   display: flex;
-  margin: 39px 24px 22px;
+  margin-bottom: 20px;
   gap: 22px;
   align-items: center;
+  background-color: #5c616820;
 }
 .contacts-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+
+  /* gap: 6px; */
 }
 .contacts-list li {
   display: flex;
   align-items: center;
   gap: 14px;
+  position: relative;
+  padding-left: 20px;
+  font-size: 12px;
 }
 .profile-text {
   color: #30353d;
@@ -178,4 +229,49 @@ h2 {
   font-weight: 400;
   line-height: 12.1px;
   text-align: left;
+  margin-bottom: 24px;
+}
+
+.experience-content ul {
+  /* list-style-position: inside; */
+  color: #5c6168;
+}
+.right-section {
+  padding: 40px 24px;
+}
+
+.experience-company {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  line-height: 12.1px;
+  color: #5c6168;
+}
+
+.job-period {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12.1px;
+  text-align: end;
+  color: #5c6168;
+}
+.experience-text {
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12.1px;
+  color: #5c6168;
+}
+
+.experience-text p {
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+.experience-job-period {
+  display: flex;
+}
+
+::marker {
+  position: absolute;
+  color: #d67215;
 }
